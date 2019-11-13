@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <style>
+  	h1 {
+  		font-size: 5em;
+  		color:orange;
+  	}
+  	main {
+		text-align:center;
+	}
+	span {
+		color:purple;
+	}
+	h3 {
+		font-size: 2em;
+	}
+	h3:nth-of-type(1) {
+		color:lime;
+	}
+	h3:nth-of-type(2) {
+		color:pink;
+	}
+	h3:nth-of-type(3) {
+		color:maroon;
+	}
+  </style>  
+</head>
+<body>
+<main>
+	<h1>lala <span>land</span></h1>
+	<h3>Step 1: type 'lala' and see the magic.</h3>
+	<h3>Step 2: type 'lala' and see the magic...again</h3>
+	<h3>Step 3: ...and AGAIN</h3>
+</main>	
+<script>
+	const pressed = [];
+	const secretCode = 'lala';
+	window.addEventListener('keyup', (e) => {
+		console.log(e.key);
+		pressed.push(e.key);
+		pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+		if(pressed.join('').includes(secretCode)) {
+			console.log("BUM BUM!");
+			cornify_add();
+		}
+		console.log(pressed);
+	});
+</script>
+</body>
+</html>
